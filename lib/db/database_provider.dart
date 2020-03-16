@@ -1,3 +1,4 @@
+import 'package:flutterblocsqflite/model/food_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -38,4 +39,20 @@ class DatabaseProvider {
       );
     });
   }
+
+  Future<List<Food>> getFoods() async {
+    final db = await database;
+    var foods = await db.query(
+      TABLE_FOOD,
+      columns: [COLUMN_ID, COLUMN_NAME, COLUMN_CALORIES, COLUMN_VEGETARIAN],
+    );
+
+    List<Food> foodList = List<Food>();
+    foods.forEach((currentFood) {
+      Food food = Food.fromMap(currentFood);
+      foodList.add(food);
+    });
+    return foodList;
+  }
+
 }
