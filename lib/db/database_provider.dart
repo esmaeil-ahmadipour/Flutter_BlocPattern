@@ -54,5 +54,9 @@ class DatabaseProvider {
     });
     return foodList;
   }
-
+  Future <Food> insert (Food food) async{
+    final db = await database;
+    food.id = await db.insert(TABLE_FOOD,food.toMap());
+    return food;
+  }
 }
