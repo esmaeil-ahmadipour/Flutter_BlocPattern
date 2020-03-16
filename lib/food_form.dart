@@ -89,87 +89,89 @@ class FoodFormState extends State<FoodForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Food Form")),
-      body: Container(
-        margin: EdgeInsets.all(24),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _buildName(),
-              _buildCalories(),
-              SizedBox(height: 16),
-              _buildIsVegetarian(),
-              SizedBox(height: 20),
-              widget.food == null
-              ? RaisedButton(
-                child: Text(
-                  'Submit',
-                  style: TextStyle(color: Colors.blue, fontSize: 16),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.all(24),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildName(),
+                _buildCalories(),
+                SizedBox(height: 16),
+                _buildIsVegetarian(),
+                SizedBox(height: 20),
+                widget.food == null
+                ? RaisedButton(
+                  child: Text(
+                    'Submit',
+                    style: TextStyle(color: Colors.blue, fontSize: 16),
+                  ),
+                  onPressed: () {
+                    if (!_formKey.currentState.validate()) {
+                      return;
+                    }
+
+                    _formKey.currentState.save();
+
+                    Food food = Food(
+                      name: _name,
+                      calories: _calories,
+                      isVegetarian: _isVegetarian,
+                    );
+
+                    DatabaseProvider.db.insert(food).then(
+                          (storedFood) => BlocProvider.of<FoodBloc>(context).add(
+                        AddFood(storedFood),
+                      ),
+                    );
+
+                    Navigator.pop(context);
+                  },
+                )
+                : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    RaisedButton(
+                      child: Text(
+                        "Update",
+                        style: TextStyle(color: Colors.blue, fontSize: 16),
+                      ),
+                      onPressed: () {
+                        if (!_formKey.currentState.validate()) {
+                          print("form");
+                          return;
+                        }
+
+                        _formKey.currentState.save();
+
+                        Food food = Food(
+                          name: _name,
+                          calories: _calories,
+                          isVegetarian: _isVegetarian,
+                        );
+
+                        DatabaseProvider.db.update(widget.food).then(
+                              (storedFood) => BlocProvider.of<FoodBloc>(context).add(
+                            UpdateFood(widget.foodIndex, food),
+                          ),
+                        );
+
+                        Navigator.pop(context);
+                      },
+                    ),
+                    RaisedButton(
+                      child: Text(
+                        "Cancel",
+                        style: TextStyle(color: Colors.red, fontSize: 16),
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ],
                 ),
-                onPressed: () {
-                  if (!_formKey.currentState.validate()) {
-                    return;
-                  }
-
-                  _formKey.currentState.save();
-
-                  Food food = Food(
-                    name: _name,
-                    calories: _calories,
-                    isVegetarian: _isVegetarian,
-                  );
-
-                  DatabaseProvider.db.insert(food).then(
-                        (storedFood) => BlocProvider.of<FoodBloc>(context).add(
-                      AddFood(storedFood),
-                    ),
-                  );
-
-                  Navigator.pop(context);
-                },
-              )
-              : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  RaisedButton(
-                    child: Text(
-                      "Update",
-                      style: TextStyle(color: Colors.blue, fontSize: 16),
-                    ),
-                    onPressed: () {
-                      if (!_formKey.currentState.validate()) {
-                        print("form");
-                        return;
-                      }
-
-                      _formKey.currentState.save();
-
-                      Food food = Food(
-                        name: _name,
-                        calories: _calories,
-                        isVegetarian: _isVegetarian,
-                      );
-
-                      DatabaseProvider.db.update(widget.food).then(
-                            (storedFood) => BlocProvider.of<FoodBloc>(context).add(
-                          UpdateFood(widget.foodIndex, food),
-                        ),
-                      );
-
-                      Navigator.pop(context);
-                    },
-                  ),
-                  RaisedButton(
-                    child: Text(
-                      "Cancel",
-                      style: TextStyle(color: Colors.red, fontSize: 16),
-                    ),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
