@@ -59,4 +59,14 @@ class DatabaseProvider {
     food.id = await db.insert(TABLE_FOOD,food.toMap());
     return food;
   }
+  Future<int> update(Food food) async {
+    final db = await database;
+
+    return await db.update(
+      TABLE_FOOD,
+      food.toMap(),
+      where: "id = ?",
+      whereArgs: [food.id],
+    );
+  }
 }
