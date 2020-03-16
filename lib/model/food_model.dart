@@ -6,7 +6,7 @@ class Food {
   String calories;
   bool isVegetarian;
 
-  Food(this.id, this.name, this.calories, this.isVegetarian);
+  Food({this.id, this.name, this.calories, this.isVegetarian});
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
