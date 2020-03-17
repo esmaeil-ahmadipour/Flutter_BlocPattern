@@ -4,6 +4,7 @@ import 'package:flutterblocsqflite/bloc/food_bloc.dart';
 import 'package:flutterblocsqflite/db/database_provider.dart';
 import 'package:flutterblocsqflite/event/add_food.dart';
 import 'package:flutterblocsqflite/event/update_food.dart';
+import 'package:flutterblocsqflite/home_page.dart';
 import 'package:flutterblocsqflite/model/food_model.dart';
 
 class FoodForm extends StatefulWidget {
@@ -22,6 +23,7 @@ class FoodFormState extends State<FoodForm> {
   String _name;
   String _calories;
   bool _isVegetarian = false;
+  int _id;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -82,6 +84,7 @@ class FoodFormState extends State<FoodForm> {
       _name = widget.food.name;
       _calories = widget.food.calories;
       _isVegetarian = widget.food.isVegetarian;
+      _id=widget.food.id;
     }
   }
 
@@ -127,7 +130,9 @@ class FoodFormState extends State<FoodForm> {
                       ),
                     );
 
-                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                        context, MaterialPageRoute(builder: (context) => HomePage()));
+
                   },
                 )
                 : Row(
@@ -143,22 +148,22 @@ class FoodFormState extends State<FoodForm> {
                           print("form");
                           return;
                         }
-
                         _formKey.currentState.save();
-
                         Food food = Food(
                           name: _name,
                           calories: _calories,
                           isVegetarian: _isVegetarian,
+                          id: _id,
                         );
 
-                        DatabaseProvider.db.update(widget.food).then(
-                              (storedFood) => BlocProvider.of<FoodBloc>(context).add(
+                        DatabaseProvider.db.update(food).then(
+                              (_) => BlocProvider.of<FoodBloc>(context).add(
                             UpdateFood(widget.foodIndex, food),
                           ),
                         );
 
-                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                            context, MaterialPageRoute(builder: (context) => HomePage()));
                       },
                     ),
                     RaisedButton(
@@ -166,7 +171,10 @@ class FoodFormState extends State<FoodForm> {
                         "Cancel",
                         style: TextStyle(color: Colors.red, fontSize: 16),
                       ),
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context, MaterialPageRoute(builder: (context) => HomePage()));
+                      },
                     ),
                   ],
                 ),

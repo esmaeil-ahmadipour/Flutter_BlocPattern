@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () => Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => FoodForm(food: food, foodIndex: index),
+                builder: (context) => FoodForm(food: food, foodIndex: food.id),
               ),
             ),
             child: Text("Update"),
@@ -69,13 +69,13 @@ class _HomePageState extends State<HomePage> {
           builder: (context, foodList) {
             return ListView.separated(
               itemBuilder: (BuildContext context, int index) {
-                print("Food List: $foodList");
+
 
                 Food food = foodList[index];
                 return ListTile(
-                    title: Text(food.name, style: TextStyle(fontSize: 30)),
+                    title: Text(food.name , style: TextStyle(fontSize: 30)),
                     subtitle: Text(
-                      "Calories: ${food.calories}\ Vegetarian: ${food.isVegetarian}",
+                      "Calories: ${food.calories}\n Vegetarian: ${food.isVegetarian}",
                       style: TextStyle(fontSize: 20),
                     ),
                     onTap: () => showFoodDialog(context, food, index));

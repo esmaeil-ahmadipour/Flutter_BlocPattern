@@ -12,7 +12,7 @@ class Food {
     var map = <String, dynamic>{
       DatabaseProvider.COLUMN_NAME: name,
       DatabaseProvider.COLUMN_CALORIES: calories,
-      DatabaseProvider.COLUMN_VEGETARIAN: isVegetarian ? 1 : 0,
+      DatabaseProvider.COLUMN_VEGETARIAN: isVegetarian ? "1" : "0",
     };
     if (id != null) {
       map[DatabaseProvider.COLUMN_ID] = id;
@@ -24,6 +24,6 @@ class Food {
     id = map[DatabaseProvider.COLUMN_ID];
     calories = map[DatabaseProvider.COLUMN_CALORIES];
     name = map[DatabaseProvider.COLUMN_NAME];
-    isVegetarian = map[DatabaseProvider.COLUMN_VEGETARIAN] == 1;
+    isVegetarian = map[DatabaseProvider.COLUMN_VEGETARIAN] == "0" ? false : true;
   }
 }
