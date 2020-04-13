@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterblocsqflite/bloc/food_bloc.dart';
-import 'package:flutterblocsqflite/home_page.dart';
-import 'package:flutterblocsqflite/ui/themes/bloc/theme_bloc.dart';
+import 'package:flutterblocsqflite/blocs/main_database/food_bloc.dart';
+import 'package:flutterblocsqflite/ui/screens/home_page.dart';
+import 'package:flutterblocsqflite/blocs/themes/theme_bloc.dart';
 
 void main() => runApp(MainPage());
 

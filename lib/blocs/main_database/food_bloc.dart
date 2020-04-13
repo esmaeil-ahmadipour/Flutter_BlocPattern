@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterblocsqflite/event/add_food.dart';
-import 'package:flutterblocsqflite/event/delete_food.dart';
-import 'package:flutterblocsqflite/event/food_event.dart';
-import 'package:flutterblocsqflite/event/set_foods.dart';
-import 'package:flutterblocsqflite/event/update_food.dart';
+import 'package:flutterblocsqflite/blocs/main_database/events/add_food.dart';
+import 'package:flutterblocsqflite/blocs/main_database/events/delete_food.dart';
+import 'package:flutterblocsqflite/blocs/main_database/events/food_event.dart';
+import 'package:flutterblocsqflite/blocs/main_database/events/set_foods.dart';
+import 'package:flutterblocsqflite/blocs/main_database/events/update_food.dart';
 import 'package:flutterblocsqflite/model/food_model.dart';
 
 class FoodBloc extends Bloc<FoodEvent, List<Food>> {

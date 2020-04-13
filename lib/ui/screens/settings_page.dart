@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterblocsqflite/ui/themes/app_themes.dart';
-import 'package:flutterblocsqflite/ui/themes/bloc/theme_bloc.dart';
+import 'package:flutterblocsqflite/enums/app_themes.dart';
+import 'package:flutterblocsqflite/blocs/themes/theme_bloc.dart';
 
 class SettingsPage extends StatelessWidget {
   final String title;

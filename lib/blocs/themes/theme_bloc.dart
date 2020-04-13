@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterblocsqflite/ui/themes/app_themes.dart';
+import 'package:flutterblocsqflite/enums/app_themes.dart';
 
 part 'theme_event.dart';
 

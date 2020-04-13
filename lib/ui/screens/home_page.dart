@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterblocsqflite/db/database_provider.dart';
-import 'package:flutterblocsqflite/event/delete_food.dart';
-import 'package:flutterblocsqflite/event/set_foods.dart';
-import 'package:flutterblocsqflite/food_form.dart';
+import 'package:flutterblocsqflite/db/main_db_provider.dart';
+import 'package:flutterblocsqflite/blocs/main_database/events/delete_food.dart';
+import 'package:flutterblocsqflite/blocs/main_database/events/set_foods.dart';
+import 'package:flutterblocsqflite/ui/screens/food_form.dart';
 import 'package:flutterblocsqflite/model/food_model.dart';
-import 'package:flutterblocsqflite/ui/themes/settings_page.dart';
+import 'package:flutterblocsqflite/ui/screens/settings_page.dart';
 
-import 'bloc/food_bloc.dart';
+import '../../blocs/main_database/food_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);

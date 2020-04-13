@@ -1,4 +1,4 @@
-import 'package:flutterblocsqflite/db/database_provider.dart';
+import 'package:flutterblocsqflite/db/main_db_provider.dart';
 
 class Food {
   int id;

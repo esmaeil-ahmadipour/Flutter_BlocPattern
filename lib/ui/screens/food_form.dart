@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterblocsqflite/bloc/food_bloc.dart';
-import 'package:flutterblocsqflite/db/database_provider.dart';
-import 'package:flutterblocsqflite/event/add_food.dart';
-import 'package:flutterblocsqflite/event/update_food.dart';
-import 'package:flutterblocsqflite/home_page.dart';
+import 'package:flutterblocsqflite/blocs/main_database/food_bloc.dart';
+import 'package:flutterblocsqflite/db/main_db_provider.dart';
+import 'package:flutterblocsqflite/blocs/main_database/events/add_food.dart';
+import 'package:flutterblocsqflite/blocs/main_database/events/update_food.dart';
+import 'package:flutterblocsqflite/ui/screens/home_page.dart';
 import 'package:flutterblocsqflite/model/food_model.dart';
 
 class FoodForm extends StatefulWidget {
