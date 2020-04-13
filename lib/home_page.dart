@@ -5,6 +5,7 @@ import 'package:flutterblocsqflite/event/delete_food.dart';
 import 'package:flutterblocsqflite/event/set_foods.dart';
 import 'package:flutterblocsqflite/food_form.dart';
 import 'package:flutterblocsqflite/model/food_model.dart';
+import 'package:flutterblocsqflite/ui/themes/settings_page.dart';
 
 import 'bloc/food_bloc.dart';
 
@@ -62,8 +63,22 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+   String _title = "Food List";
     return Scaffold(
-      appBar: AppBar(title: Text("Food List")),
+      appBar: AppBar(
+          title: Text(_title),
+        actions: <Widget>[
+          InkWell(child: Icon(Icons.settings , color: Colors.white,) , onTap: (){
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                  builder: (context) => SettingsPage(
+                    title: _title,
+                  )),
+            );
+          },),
+        ],
+
+      ),
       body: Container(
         child: BlocConsumer<FoodBloc, List<Food>>(
           builder: (context, foodList) {
