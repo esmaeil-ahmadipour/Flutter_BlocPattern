@@ -5,7 +5,7 @@ import 'package:flutterblocsqflite/blocs/themes/theme_bloc.dart';
 
 class SettingsPage extends StatelessWidget {
   final String title;
-  SettingsPage({this.title});
+  SettingsPage(this.title);
 
   @override
   Widget build(BuildContext context) {

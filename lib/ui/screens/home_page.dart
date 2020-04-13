@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterblocsqflite/db/main_db_provider.dart';
 import 'package:flutterblocsqflite/blocs/main_database/events/delete_food.dart';
 import 'package:flutterblocsqflite/blocs/main_database/events/set_foods.dart';
-import 'package:flutterblocsqflite/ui/screens/food_form.dart';
+import 'package:flutterblocsqflite/db/main_db_provider.dart';
 import 'package:flutterblocsqflite/model/food_model.dart';
+import 'package:flutterblocsqflite/ui/screens/food_form.dart';
+import 'package:flutterblocsqflite/ui/screens/online_page.dart';
 import 'package:flutterblocsqflite/ui/screens/settings_page.dart';
 
 import '../../blocs/main_database/food_bloc.dart';
@@ -63,32 +64,46 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-   String _title = "Food List";
+    String _title = "Food List";
     return Scaffold(
       appBar: AppBar(
-          title: Text(_title),
+        title: Text(_title),
         actions: <Widget>[
-          InkWell(child: Icon(Icons.settings , color: Colors.white,) , onTap: (){
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                  builder: (context) => SettingsPage(
-                    title: _title,
-                  )),
-            );
-          },),
+          InkWell(
+            child: Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                    builder: (context) => SettingsPage(
+                      _title,
+                    )),
+              );
+            },
+          ),
+//          IconButton(
+//            icon: Icon(Icons.cached),
+//            onPressed: () {
+//              Navigator.of(context).pushReplacement(
+//                MaterialPageRoute(
+//                    builder: (context) => OnlinePage(
+//                    ),
+//                ),
+//              );
+//            },
+//          ),
         ],
-
       ),
       body: Container(
         child: BlocConsumer<FoodBloc, List<Food>>(
           builder: (context, foodList) {
             return ListView.separated(
               itemBuilder: (BuildContext context, int index) {
-
-
                 Food food = foodList[index];
                 return ListTile(
-                    title: Text(food.name , style: TextStyle(fontSize: 30)),
+                    title: Text(food.name, style: TextStyle(fontSize: 30)),
                     subtitle: Text(
                       "Calories: ${food.calories}\n Vegetarian: ${food.isVegetarian}",
                       style: TextStyle(fontSize: 20),
