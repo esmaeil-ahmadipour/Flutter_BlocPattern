@@ -130,7 +130,7 @@ class FoodFormState extends State<FoodForm> {
                       ),
                     );
 
-                    Navigator.pushReplacement(
+                    Navigator.pop(
                         context, MaterialPageRoute(builder: (context) => HomePage()));
 
                   },
