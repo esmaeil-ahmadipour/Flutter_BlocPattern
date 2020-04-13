@@ -26,24 +26,30 @@ class _OnlinePageState extends State<OnlinePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Builder(
-        builder: (context) {
-          return Material(
-            child: Scaffold(
+    return Scaffold(
               appBar: AppBar(
                 title: Text("Health News"),
                 actions: <Widget>[
                   IconButton(
                     icon: Icon(Icons.settings),
                     onPressed: () {
-                      SettingsPage('Settings');
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => SettingsPage('Settings'
+                          ),
+                        ),
+                      );
                     },
                   ),
                   IconButton(
                     icon: Icon(Icons.archive),
                     onPressed: () {
-                      HomePage();
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(
+                          ),
+                        ),
+                      );
                     },
                   ),
                   IconButton(
@@ -80,11 +86,7 @@ class _OnlinePageState extends State<OnlinePage> {
                   ),
                 ),
               ),
-            ),
-          );
-        },
-      ),
-    );
+            );
   }
 
   Widget buildLoading() {

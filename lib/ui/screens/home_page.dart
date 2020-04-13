@@ -83,17 +83,17 @@ class _HomePageState extends State<HomePage> {
               );
             },
           ),
-//          IconButton(
-//            icon: Icon(Icons.cached),
-//            onPressed: () {
-//              Navigator.of(context).pushReplacement(
-//                MaterialPageRoute(
-//                    builder: (context) => OnlinePage(
-//                    ),
-//                ),
-//              );
-//            },
-//          ),
+          IconButton(
+            icon: Icon(Icons.cached),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                    builder: (context) => OnlinePage(
+                    ),
+                ),
+              );
+            },
+          ),
         ],
       ),
       body: Container(
