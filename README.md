@@ -1,10 +1,10 @@
 # Flutter_BlocPattern
 
-## A Sample Flutter App Using (Bloc Sqflite) & (Bloc Change Theme) & (Bloc RestAPI).
+### A Sample Flutter App Using (Bloc Sqflite) & (Bloc Change Theme) & (Bloc RestAPI).
 
-![alt text](https://i.ibb.co/4KgZcVK/Flutter-Bloc-pattern.jpg)
+![alt text](https://i.ibb.co/4KgZcVK/Flutter-Bloc-pattern.jpg?sanitize=true&raw=true)
 
-### Getting Started
+## Getting Started
 
 This project is a starting point for a Flutter application.
 
